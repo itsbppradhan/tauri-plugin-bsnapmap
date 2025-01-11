@@ -12,8 +12,8 @@ importers:
         specifier: ^2.0.0
         version: 2.2.0
       tauri-plugin-bsnapmap-api:
-        specifier: file:../../
-        version: file:../..
+        specifier: workspace:../../
+        version: link:../..
     devDependencies:
       '@sveltejs/vite-plugin-svelte':
         specifier: ^5.0.0
@@ -475,9 +475,6 @@ packages:
     resolution: {integrity: sha512-eLgtpR2JiTgeuNQRCDcLx35Z7Lu9Qe09GPOz+gvtR9nmIZu5xgFd6oFiLGQlxLD0/u7xVyF5AUkjDVyFHe6Bvw==}
     engines: {node: '>=18'}
 
-  tauri-plugin-bsnapmap-api@file:../..:
-    resolution: {directory: ../.., type: directory}
-
   vite@6.0.7:
     resolution: {integrity: sha512-RDt8r/7qx9940f8FcOIAH9PTViRrghKaK2K1jY3RaAURrEUbm9Du1mJ72G+jlhtG3WwodnfzY8ORQZbBavZEAQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
@@ -876,10 +873,6 @@ snapshots:
       locate-character: 3.0.0
       magic-string: 0.30.17
       zimmerframe: 1.1.2
-
-  tauri-plugin-bsnapmap-api@file:../..:
-    dependencies:
-      '@tauri-apps/api': 2.2.0
 
   vite@6.0.7:
     dependencies:
