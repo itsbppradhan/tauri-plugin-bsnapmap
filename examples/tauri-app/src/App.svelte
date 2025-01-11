@@ -1,10 +1,12 @@
 <script>
   import Greet from './lib/Greet.svelte'
-  import { ping } from 'tauri-plugin-bsnapmap-api'
+  import { ping, trackMousePosition } from 'tauri-plugin-bsnapmap-api'
   import { getCurrentWindow } from '@tauri-apps/api/window'
   import { onMount } from 'svelte';
 
 	let response = ''
+	let mouseX = 0;
+	let mouseY = 0;
 
 	function updateResponse(returnValue) {
 		response += `[${new Date().toLocaleTimeString()}] ` + (typeof returnValue === 'string' ? returnValue : JSON.stringify(returnValue)) + '<br>'
@@ -29,6 +31,18 @@
   document
     .getElementById('titlebar-close')
     ?.addEventListener('click', () => appWindow.close());
+
+    const cleanup = trackMousePosition(async (pos) => {
+      try {
+        mouseX = pos.x;
+        mouseY = pos.y;
+        console.log('Mouse position:', pos); // Debug log
+      } catch (e) {
+        console.error('Error tracking mouse:', e);
+      }
+    });
+
+    return () => cleanup();
   });
 </script>
 
@@ -58,6 +72,10 @@
   <div>
     <button on:click="{_ping}">Ping</button>
     <div>{@html response}</div>
+  </div>
+
+  <div>
+    Mouse Position: {mouseX}, {mouseY}
   </div>
 
 </main>

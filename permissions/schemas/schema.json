@@ -295,6 +295,16 @@
       "type": "string",
       "oneOf": [
         {
+          "description": "Enables the get_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-mouse-position"
+        },
+        {
+          "description": "Denies the get_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-mouse-position"
+        },
+        {
           "description": "Enables the ping command without any pre-configured scope.",
           "type": "string",
           "const": "allow-ping"
