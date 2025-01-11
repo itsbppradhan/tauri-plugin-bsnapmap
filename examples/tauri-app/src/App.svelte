@@ -1,6 +1,8 @@
 <script>
   import Greet from './lib/Greet.svelte'
   import { ping } from 'tauri-plugin-bsnapmap-api'
+  import { getCurrentWindow } from '@tauri-apps/api/window'
+  import { onMount } from 'svelte';
 
 	let response = ''
 
@@ -11,6 +13,23 @@
 	function _ping() {
 		ping("Pong!").then(updateResponse).catch(updateResponse)
 	}
+
+  onMount(() => {
+  // when using `"withGlobalTauri": true`, you may use
+  //const { getCurrentWindow } = window.__TAURI__.window;
+
+  const appWindow = getCurrentWindow();
+
+  document
+    .getElementById('titlebar-minimize')
+    ?.addEventListener('click', () => appWindow.minimize());
+  document
+    .getElementById('titlebar-maximize')
+    ?.addEventListener('click', () => appWindow.toggleMaximize());
+  document
+    .getElementById('titlebar-close')
+    ?.addEventListener('click', () => appWindow.close());
+  });
 </script>
 
 <main class="container">

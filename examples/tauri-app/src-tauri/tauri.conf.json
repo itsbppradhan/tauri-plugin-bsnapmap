@@ -9,7 +9,7 @@
     "frontendDist": "../dist"
   },
   "app": {
-    "withGlobalTauri": false,
+    "withGlobalTauri": true,
     "security": {
       "csp": null
     },
@@ -19,7 +19,8 @@
         "height": 600,
         "resizable": true,
         "title": "tauri-app",
-        "width": 800
+        "width": 800,
+        "decorations": false
       }
     ]
   },
