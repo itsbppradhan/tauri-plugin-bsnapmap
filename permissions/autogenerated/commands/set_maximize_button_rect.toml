@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-set-maximize-button-rect"
+description = "Enables the set_maximize_button_rect command without any pre-configured scope."
+commands.allow = ["set_maximize_button_rect"]
+
+[[permission]]
+identifier = "deny-set-maximize-button-rect"
+description = "Denies the set_maximize_button_rect command without any pre-configured scope."
+commands.deny = ["set_maximize_button_rect"]

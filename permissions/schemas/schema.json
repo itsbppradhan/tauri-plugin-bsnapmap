@@ -345,6 +345,16 @@
           "const": "deny-ping"
         },
         {
+          "description": "Enables the set_maximize_button_rect command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-set-maximize-button-rect"
+        },
+        {
+          "description": "Denies the set_maximize_button_rect command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-set-maximize-button-rect"
+        },
+        {
           "description": "Default permissions for the plugin",
           "type": "string",
           "const": "default"

@@ -60,3 +60,25 @@ export function trackAllMousePositions(callback: (positions: {
   }, interval);
   return () => clearInterval(tracker);
 }
+
+export interface ButtonRect {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+}
+
+export async function setMaximizeButtonRect(): Promise<void> {
+  const button = document.querySelector('[data-tauri-maximize-region]');
+  if (!button) return;
+  
+  const rect = button.getBoundingClientRect();
+  const buttonRect: ButtonRect = {
+    left: Math.round(rect.left),
+    top: Math.round(rect.top),
+    right: Math.round(rect.right),
+    bottom: Math.round(rect.bottom)
+  };
+  
+  return invoke('plugin:bsnapmap|set_maximize_button_rect', { rect: buttonRect });
+}

@@ -40,7 +40,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
       commands::get_mouse_position,
       commands::get_win32_mouse_position,
       commands::get_lparam_mouse_position,
-      commands::get_mapped_mouse_position
+      commands::get_mapped_mouse_position,
+      commands::set_maximize_button_rect
     ])
     .setup(|app, api| {
       #[cfg(mobile)]

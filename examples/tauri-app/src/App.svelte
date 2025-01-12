@@ -1,6 +1,6 @@
 <script>
   import Greet from './lib/Greet.svelte'
-  import { ping, trackMousePosition, trackBothMousePositions, trackAllMousePositions } from 'tauri-plugin-bsnapmap-api'
+  import { ping, trackMousePosition, trackBothMousePositions, trackAllMousePositions, setMaximizeButtonRect } from 'tauri-plugin-bsnapmap-api'
   import { getCurrentWindow } from '@tauri-apps/api/window'
   import { onMount } from 'svelte';
 
@@ -13,6 +13,10 @@
 	let lparamY = 0;
 	let mappedX = 0;
 	let mappedY = 0;
+	let buttonLeft = 0;
+	let buttonTop = 0;
+	let buttonRight = 0;
+	let buttonBottom = 0;
 
 	function updateResponse(returnValue) {
 		response += `[${new Date().toLocaleTimeString()}] ` + (typeof returnValue === 'string' ? returnValue : JSON.stringify(returnValue)) + '<br>'
@@ -54,7 +58,24 @@
       }
     });
 
-    return () => cleanup();
+    const updateButtonRect = () => {
+      const button = document.querySelector('[data-tauri-maximize-region]');
+      if (button) {
+        const rect = button.getBoundingClientRect();
+        buttonLeft = Math.round(rect.left);
+        buttonTop = Math.round(rect.top);
+        buttonRight = Math.round(rect.right);
+        buttonBottom = Math.round(rect.bottom);
+      }
+    };
+
+    updateButtonRect();
+    window.addEventListener('resize', updateButtonRect);
+
+    return () => {
+      cleanup();
+      window.removeEventListener('resize', updateButtonRect);
+    };
   });
 </script>
 
@@ -94,6 +115,16 @@
     LParam Mouse Position: {lparamX}, {lparamY}
     <br/>
     Mapped Window Position: {mappedX}, {mappedY}
+  </div>
+
+  <div>
+    Maximize Button Coordinates:
+    <br/>
+    Left: {buttonLeft}, Top: {buttonTop}
+    <br/>
+    Right: {buttonRight}, Bottom: {buttonBottom}
+    <br/>
+    Width: {buttonRight - buttonLeft}, Height: {buttonBottom - buttonTop}
   </div>
 
 </main>

@@ -207,6 +207,11 @@
           "const": "bsnapmap:allow-ping"
         },
         {
+          "description": "Enables the set_maximize_button_rect command without any pre-configured scope.",
+          "type": "string",
+          "const": "bsnapmap:allow-set-maximize-button-rect"
+        },
+        {
           "description": "Denies the get_lparam_mouse_position command without any pre-configured scope.",
           "type": "string",
           "const": "bsnapmap:deny-get-lparam-mouse-position"
@@ -230,6 +235,11 @@
           "description": "Denies the ping command without any pre-configured scope.",
           "type": "string",
           "const": "bsnapmap:deny-ping"
+        },
+        {
+          "description": "Denies the set_maximize_button_rect command without any pre-configured scope.",
+          "type": "string",
+          "const": "bsnapmap:deny-set-maximize-button-rect"
         },
         {
           "description": "Default core plugins set which includes:\n- 'core:path:default'\n- 'core:event:default'\n- 'core:window:default'\n- 'core:webview:default'\n- 'core:app:default'\n- 'core:image:default'\n- 'core:resources:default'\n- 'core:menu:default'\n- 'core:tray:default'\n",

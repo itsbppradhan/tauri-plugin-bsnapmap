@@ -142,4 +142,30 @@ Denies the ping command without any pre-configured scope.
 
 </td>
 </tr>
+
+<tr>
+<td>
+
+`bsnapmap:allow-set-maximize-button-rect`
+
+</td>
+<td>
+
+Enables the set_maximize_button_rect command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`bsnapmap:deny-set-maximize-button-rect`
+
+</td>
+<td>
+
+Denies the set_maximize_button_rect command without any pre-configured scope.
+
+</td>
+</tr>
 </table>

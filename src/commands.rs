@@ -159,3 +159,13 @@ pub(crate) async fn map_window_points<R: Runtime>(
         })
         .collect())
 }
+
+#[cfg(target_os = "windows")]
+#[command(rename_all = "snake_case", permission = "bsnapmap:allow-set-maximize-button-rect")]
+pub(crate) async fn set_maximize_button_rect<R: Runtime>(
+    _window: Window<R>,
+    rect: ButtonRect,
+) -> Result<()> {
+    // Store or use the rect coordinates as needed
+    Ok(())
+}
