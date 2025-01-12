@@ -2,7 +2,6 @@ use tauri::{
   plugin::{Builder, TauriPlugin},
   Manager, Runtime,
 };
-use serde::Deserialize;
 
 pub use models::*;
 
@@ -38,7 +37,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
   Builder::new("bsnapmap")
     .invoke_handler(tauri::generate_handler![
       commands::ping,
-      commands::get_mouse_position
+      commands::get_mouse_position,
+      commands::get_win32_mouse_position
     ])
     .setup(|app, api| {
       #[cfg(mobile)]

@@ -305,6 +305,16 @@
           "const": "deny-get-mouse-position"
         },
         {
+          "description": "Enables the get_win32_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-win32-mouse-position"
+        },
+        {
+          "description": "Denies the get_win32_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-win32-mouse-position"
+        },
+        {
           "description": "Enables the ping command without any pre-configured scope.",
           "type": "string",
           "const": "allow-ping"

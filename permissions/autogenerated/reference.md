@@ -42,6 +42,32 @@ Denies the get_mouse_position command without any pre-configured scope.
 <tr>
 <td>
 
+`bsnapmap:allow-get-win32-mouse-position`
+
+</td>
+<td>
+
+Enables the get_win32_mouse_position command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`bsnapmap:deny-get-win32-mouse-position`
+
+</td>
+<td>
+
+Denies the get_win32_mouse_position command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `bsnapmap:allow-ping`
 
 </td>

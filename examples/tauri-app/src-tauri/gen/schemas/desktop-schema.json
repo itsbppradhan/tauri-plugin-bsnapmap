@@ -187,6 +187,11 @@
           "const": "bsnapmap:allow-get-mouse-position"
         },
         {
+          "description": "Enables the get_win32_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "bsnapmap:allow-get-win32-mouse-position"
+        },
+        {
           "description": "Enables the ping command without any pre-configured scope.",
           "type": "string",
           "const": "bsnapmap:allow-ping"
@@ -195,6 +200,11 @@
           "description": "Denies the get_mouse_position command without any pre-configured scope.",
           "type": "string",
           "const": "bsnapmap:deny-get-mouse-position"
+        },
+        {
+          "description": "Denies the get_win32_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "bsnapmap:deny-get-win32-mouse-position"
         },
         {
           "description": "Denies the ping command without any pre-configured scope.",

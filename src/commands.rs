@@ -3,6 +3,12 @@ use crate::models::*;
 use crate::Result;
 use crate::BsnapmapExt;
 
+#[cfg(target_os = "windows")]
+use windows::Win32::{
+    Foundation::POINT,
+    UI::WindowsAndMessaging::GetCursorPos,
+};
+
 #[command]
 pub(crate) async fn ping<R: Runtime>(
     app: AppHandle<R>,
@@ -11,6 +17,22 @@ pub(crate) async fn ping<R: Runtime>(
     app.bsnapmap().ping(payload)
 }
 
+#[cfg(target_os = "windows")]
+#[command]
+pub(crate) async fn get_mouse_position<R: Runtime>(
+    _window: Window<R>,
+) -> Result<MousePosition> {
+    let mut point = POINT { x: 0, y: 0 };
+    unsafe {
+        GetCursorPos(&mut point)?;
+    }
+    Ok(MousePosition {
+        x: point.x as f64,
+        y: point.y as f64,
+    })
+}
+
+#[cfg(not(target_os = "windows"))]
 #[command]
 pub(crate) async fn get_mouse_position<R: Runtime>(
     window: Window<R>,
@@ -19,5 +41,20 @@ pub(crate) async fn get_mouse_position<R: Runtime>(
     Ok(MousePosition {
         x: position.x,
         y: position.y,
+    })
+}
+
+#[cfg(target_os = "windows")]
+#[command]
+pub(crate) async fn get_win32_mouse_position<R: Runtime>(
+    _window: Window<R>,
+) -> Result<MousePosition> {
+    let mut point = POINT { x: 0, y: 0 };
+    unsafe {
+        GetCursorPos(&mut point)?;
+    }
+    Ok(MousePosition {
+        x: point.x as f64,
+        y: point.y as f64,
     })
 }
