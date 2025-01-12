@@ -10,6 +10,7 @@
     "bsnapmap:default",
     "bsnapmap:allow-get-mouse-position",
     "bsnapmap:allow-get-win32-mouse-position",
+    "bsnapmap:allow-get-lparam-mouse-position",
     "core:window:default",
     "core:window:allow-start-dragging",
     "core:window:allow-close",

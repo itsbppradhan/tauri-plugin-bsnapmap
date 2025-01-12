@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-get-lparam-mouse-position"
+description = "Enables the get_lparam_mouse_position command without any pre-configured scope."
+commands.allow = ["get_lparam_mouse_position"]
+
+[[permission]]
+identifier = "deny-get-lparam-mouse-position"
+description = "Denies the get_lparam_mouse_position command without any pre-configured scope."
+commands.deny = ["get_lparam_mouse_position"]

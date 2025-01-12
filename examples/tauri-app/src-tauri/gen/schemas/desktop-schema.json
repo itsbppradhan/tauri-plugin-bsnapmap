@@ -182,6 +182,11 @@
           "const": "bsnapmap:default"
         },
         {
+          "description": "Enables the get_lparam_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "bsnapmap:allow-get-lparam-mouse-position"
+        },
+        {
           "description": "Enables the get_mouse_position command without any pre-configured scope.",
           "type": "string",
           "const": "bsnapmap:allow-get-mouse-position"
@@ -195,6 +200,11 @@
           "description": "Enables the ping command without any pre-configured scope.",
           "type": "string",
           "const": "bsnapmap:allow-ping"
+        },
+        {
+          "description": "Denies the get_lparam_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "bsnapmap:deny-get-lparam-mouse-position"
         },
         {
           "description": "Denies the get_mouse_position command without any pre-configured scope.",

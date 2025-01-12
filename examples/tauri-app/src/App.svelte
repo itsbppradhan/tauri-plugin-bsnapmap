@@ -1,6 +1,6 @@
 <script>
   import Greet from './lib/Greet.svelte'
-  import { ping, trackMousePosition, trackBothMousePositions } from 'tauri-plugin-bsnapmap-api'
+  import { ping, trackMousePosition, trackBothMousePositions, trackAllMousePositions } from 'tauri-plugin-bsnapmap-api'
   import { getCurrentWindow } from '@tauri-apps/api/window'
   import { onMount } from 'svelte';
 
@@ -9,6 +9,8 @@
 	let mouseY = 0;
 	let win32X = 0;
 	let win32Y = 0;
+	let lparamX = 0;
+	let lparamY = 0;
 
 	function updateResponse(returnValue) {
 		response += `[${new Date().toLocaleTimeString()}] ` + (typeof returnValue === 'string' ? returnValue : JSON.stringify(returnValue)) + '<br>'
@@ -34,12 +36,14 @@
     .getElementById('titlebar-close')
     ?.addEventListener('click', () => appWindow.close());
 
-    const cleanup = trackBothMousePositions(async (pos) => {
+    const cleanup = trackAllMousePositions(async (pos) => {
       try {
         mouseX = pos.tauri.x;
         mouseY = pos.tauri.y;
         win32X = pos.win32.x;
         win32Y = pos.win32.y;
+        lparamX = pos.lparam.x;
+        lparamY = pos.lparam.y;
         console.log('Mouse positions:', pos);
       } catch (e) {
         console.error('Error tracking mouse:', e);
@@ -82,6 +86,8 @@
     Tauri Mouse Position: {mouseX}, {mouseY}
     <br/>
     Win32 Mouse Position: {win32X}, {win32Y}
+    <br/>
+    LParam Mouse Position: {lparamX}, {lparamY}
   </div>
 
 </main>

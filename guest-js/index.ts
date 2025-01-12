@@ -36,3 +36,21 @@ export function trackBothMousePositions(callback: (positions: {tauri: MousePosit
   }, interval);
   return () => clearInterval(tracker);
 }
+
+export async function getLParamMousePosition(): Promise<MousePosition> {
+  return invoke('plugin:bsnapmap|get_lparam_mouse_position');
+}
+
+export function trackAllMousePositions(callback: (positions: {
+  tauri: MousePosition, 
+  win32: MousePosition,
+  lparam: MousePosition
+}) => void, interval = 100) {
+  const tracker = setInterval(async () => {
+    const tauri = await getMousePosition();
+    const win32 = await getWin32MousePosition();
+    const lparam = await getLParamMousePosition();
+    callback({ tauri, win32, lparam });
+  }, interval);
+  return () => clearInterval(tracker);
+}

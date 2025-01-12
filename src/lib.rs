@@ -38,7 +38,8 @@ pub fn init<R: Runtime>() -> TauriPlugin<R> {
     .invoke_handler(tauri::generate_handler![
       commands::ping,
       commands::get_mouse_position,
-      commands::get_win32_mouse_position
+      commands::get_win32_mouse_position,
+      commands::get_lparam_mouse_position
     ])
     .setup(|app, api| {
       #[cfg(mobile)]
