@@ -14,7 +14,9 @@ use anyhow::anyhow;
 
 use windows::Win32::{
     Foundation::{HWND, WPARAM, LPARAM, LRESULT, POINT},
-    UI::WindowsAndMessaging::{WM_NCHITTEST, DefWindowProcW, HTMAXBUTTON, SetWindowLongPtrW, GWLP_WNDPROC},
+    UI::WindowsAndMessaging::{
+        WM_NCHITTEST, DefWindowProcW, HTMAXBUTTON, SetWindowLongPtrW, GWLP_WNDPROC
+    },
     Graphics::Gdi::ScreenToClient,
 };
 
