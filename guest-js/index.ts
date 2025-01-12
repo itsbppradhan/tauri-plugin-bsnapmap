@@ -72,12 +72,15 @@ export async function setMaximizeButtonRect(): Promise<void> {
   const button = document.querySelector('[data-tauri-maximize-region]');
   if (!button) return;
   
+  // Get DPI scale factor
+  const dpiScale = window.devicePixelRatio;
+  
   const rect = button.getBoundingClientRect();
   const buttonRect: ButtonRect = {
-    left: Math.round(rect.left),
-    top: Math.round(rect.top),
-    right: Math.round(rect.right),
-    bottom: Math.round(rect.bottom)
+    left: Math.round(rect.left * dpiScale),
+    top: Math.round(rect.top * dpiScale),
+    right: Math.round(rect.right * dpiScale),
+    bottom: Math.round(rect.bottom * dpiScale)
   };
   
   return invoke('plugin:bsnapmap|set_maximize_button_rect', { rect: buttonRect });

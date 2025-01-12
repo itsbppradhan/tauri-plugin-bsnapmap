@@ -61,16 +61,20 @@
     const updateButtonRect = () => {
       const button = document.querySelector('[data-tauri-maximize-region]');
       if (button) {
+        const dpiScale = window.devicePixelRatio;
         const rect = button.getBoundingClientRect();
-        buttonLeft = Math.round(rect.left);
-        buttonTop = Math.round(rect.top);
-        buttonRight = Math.round(rect.right);
-        buttonBottom = Math.round(rect.bottom);
+        buttonLeft = Math.round(rect.left * dpiScale);
+        buttonTop = Math.round(rect.top * dpiScale);
+        buttonRight = Math.round(rect.right * dpiScale);
+        buttonBottom = Math.round(rect.bottom * dpiScale);
       }
     };
 
     updateButtonRect();
     window.addEventListener('resize', updateButtonRect);
+
+    window.matchMedia('(resolution: 1dppx)').addListener(updateButtonRect);
+    appWindow.listen('tauri://move', updateButtonRect);
 
     return () => {
       cleanup();
