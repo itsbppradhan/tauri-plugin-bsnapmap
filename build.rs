@@ -4,7 +4,8 @@ const COMMANDS: &[&str] = &[
     "get_win32_mouse_position", 
     "get_lparam_mouse_position", 
     "get_mapped_mouse_position",
-    "set_maximize_button_rect"
+    "set_maximize_button_rect",
+    "is_over_maximize_button"
 ];
 
 fn main() {

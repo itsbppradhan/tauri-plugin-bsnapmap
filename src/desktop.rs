@@ -20,3 +20,14 @@ impl<R: Runtime> Bsnapmap<R> {
     })
   }
 }
+
+/// Extension trait for AppHandle
+pub trait BsnapmapExt<R: Runtime> {
+    fn bsnapmap(&self) -> Bsnapmap<R>;
+}
+
+impl<R: Runtime> BsnapmapExt<R> for AppHandle<R> {
+    fn bsnapmap(&self) -> Bsnapmap<R> {
+        Bsnapmap(self.clone())
+    }
+}

@@ -120,6 +120,32 @@ Denies the get_win32_mouse_position command without any pre-configured scope.
 <tr>
 <td>
 
+`bsnapmap:allow-is-over-maximize-button`
+
+</td>
+<td>
+
+Enables the is_over_maximize_button command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`bsnapmap:deny-is-over-maximize-button`
+
+</td>
+<td>
+
+Denies the is_over_maximize_button command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `bsnapmap:allow-ping`
 
 </td>

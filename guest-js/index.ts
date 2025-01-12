@@ -85,3 +85,15 @@ export async function setMaximizeButtonRect(): Promise<void> {
   
   return invoke('plugin:bsnapmap|set_maximize_button_rect', { rect: buttonRect });
 }
+
+export async function isOverMaximizeButton(): Promise<boolean> {
+  return invoke('plugin:bsnapmap|is_over_maximize_button');
+}
+
+export function trackMaximizeButtonHover(callback: (isOver: boolean) => void, interval = 50) {
+  const tracker = setInterval(async () => {
+    const isOver = await isOverMaximizeButton();
+    callback(isOver);
+  }, interval);
+  return () => clearInterval(tracker);
+}

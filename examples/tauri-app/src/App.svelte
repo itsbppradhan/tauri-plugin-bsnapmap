@@ -1,6 +1,6 @@
 <script>
   import Greet from './lib/Greet.svelte'
-  import { ping, trackMousePosition, trackBothMousePositions, trackAllMousePositions, setMaximizeButtonRect } from 'tauri-plugin-bsnapmap-api'
+  import { ping, trackMousePosition, trackBothMousePositions, trackAllMousePositions, setMaximizeButtonRect, trackMaximizeButtonHover } from 'tauri-plugin-bsnapmap-api'
   import { getCurrentWindow } from '@tauri-apps/api/window'
   import { onMount } from 'svelte';
 
@@ -17,6 +17,7 @@
 	let buttonTop = 0;
 	let buttonRight = 0;
 	let buttonBottom = 0;
+	let isOverMaxButton = false;
 
 	function updateResponse(returnValue) {
 		response += `[${new Date().toLocaleTimeString()}] ` + (typeof returnValue === 'string' ? returnValue : JSON.stringify(returnValue)) + '<br>'
@@ -58,7 +59,7 @@
       }
     });
 
-    const updateButtonRect = () => {
+    const updateButtonRect = async () => {
       const button = document.querySelector('[data-tauri-maximize-region]');
       if (button) {
         const dpiScale = window.devicePixelRatio;
@@ -67,6 +68,9 @@
         buttonTop = Math.round(rect.top * dpiScale);
         buttonRight = Math.round(rect.right * dpiScale);
         buttonBottom = Math.round(rect.bottom * dpiScale);
+        
+        // Send the coordinates to Rust
+        await setMaximizeButtonRect();
       }
     };
 
@@ -76,8 +80,13 @@
     window.matchMedia('(resolution: 1dppx)').addListener(updateButtonRect);
     appWindow.listen('tauri://move', updateButtonRect);
 
+    const hoverCleanup = trackMaximizeButtonHover((isOver) => {
+      isOverMaxButton = isOver;
+    });
+
     return () => {
       cleanup();
+      hoverCleanup();
       window.removeEventListener('resize', updateButtonRect);
     };
   });
@@ -129,6 +138,10 @@
     Right: {buttonRight}, Bottom: {buttonBottom}
     <br/>
     Width: {buttonRight - buttonLeft}, Height: {buttonBottom - buttonTop}
+  </div>
+
+  <div>
+    Mouse over maximize button: {isOverMaxButton}
   </div>
 
 </main>

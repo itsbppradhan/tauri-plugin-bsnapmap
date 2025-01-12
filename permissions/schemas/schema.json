@@ -335,6 +335,16 @@
           "const": "deny-get-win32-mouse-position"
         },
         {
+          "description": "Enables the is_over_maximize_button command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-is-over-maximize-button"
+        },
+        {
+          "description": "Denies the is_over_maximize_button command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-is-over-maximize-button"
+        },
+        {
           "description": "Enables the ping command without any pre-configured scope.",
           "type": "string",
           "const": "allow-ping"
