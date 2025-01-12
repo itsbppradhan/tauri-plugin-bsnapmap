@@ -187,6 +187,11 @@
           "const": "bsnapmap:allow-get-lparam-mouse-position"
         },
         {
+          "description": "Enables the get_mapped_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "bsnapmap:allow-get-mapped-mouse-position"
+        },
+        {
           "description": "Enables the get_mouse_position command without any pre-configured scope.",
           "type": "string",
           "const": "bsnapmap:allow-get-mouse-position"
@@ -205,6 +210,11 @@
           "description": "Denies the get_lparam_mouse_position command without any pre-configured scope.",
           "type": "string",
           "const": "bsnapmap:deny-get-lparam-mouse-position"
+        },
+        {
+          "description": "Denies the get_mapped_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "bsnapmap:deny-get-mapped-mouse-position"
         },
         {
           "description": "Denies the get_mouse_position command without any pre-configured scope.",

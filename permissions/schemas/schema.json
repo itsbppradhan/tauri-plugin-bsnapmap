@@ -305,6 +305,16 @@
           "const": "deny-get-lparam-mouse-position"
         },
         {
+          "description": "Enables the get_mapped_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-mapped-mouse-position"
+        },
+        {
+          "description": "Denies the get_mapped_mouse_position command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-mapped-mouse-position"
+        },
+        {
           "description": "Enables the get_mouse_position command without any pre-configured scope.",
           "type": "string",
           "const": "allow-get-mouse-position"

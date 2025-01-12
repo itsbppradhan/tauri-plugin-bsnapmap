@@ -11,6 +11,8 @@
 	let win32Y = 0;
 	let lparamX = 0;
 	let lparamY = 0;
+	let mappedX = 0;
+	let mappedY = 0;
 
 	function updateResponse(returnValue) {
 		response += `[${new Date().toLocaleTimeString()}] ` + (typeof returnValue === 'string' ? returnValue : JSON.stringify(returnValue)) + '<br>'
@@ -44,6 +46,8 @@
         win32Y = pos.win32.y;
         lparamX = pos.lparam.x;
         lparamY = pos.lparam.y;
+        mappedX = pos.mapped.x;
+        mappedY = pos.mapped.y;
         console.log('Mouse positions:', pos);
       } catch (e) {
         console.error('Error tracking mouse:', e);
@@ -88,6 +92,8 @@
     Win32 Mouse Position: {win32X}, {win32Y}
     <br/>
     LParam Mouse Position: {lparamX}, {lparamY}
+    <br/>
+    Mapped Window Position: {mappedX}, {mappedY}
   </div>
 
 </main>

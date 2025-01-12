@@ -42,6 +42,32 @@ Denies the get_lparam_mouse_position command without any pre-configured scope.
 <tr>
 <td>
 
+`bsnapmap:allow-get-mapped-mouse-position`
+
+</td>
+<td>
+
+Enables the get_mapped_mouse_position command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`bsnapmap:deny-get-mapped-mouse-position`
+
+</td>
+<td>
+
+Denies the get_mapped_mouse_position command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `bsnapmap:allow-get-mouse-position`
 
 </td>
